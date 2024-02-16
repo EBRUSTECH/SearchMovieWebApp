@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MovieModel.Movie>
+
+@{
+    ViewData["Title"] = "SearchMovie";
+}
+
+<div class="container text-center">
+    <h1 class="display-1">Welcome to <span style="color:red">SearchMovie</span></h1>
+    <p class="display-6 search-movie">
+        SearchMovie is powered by OMDb API, a simple movie search tool that
+        allows you to quickly and easily find your favorite movies.
+    </p>
+</div>
+
+<div class="container mt-5 text-center p-3 my-4 w-50 border-bottom border-2 border-danger bg-dark text-white" style="border-radius:10px">
+    <p>Try it now and see the amazing result</p>
+    <form asp-controller="Search" asp-action="Index" class="row d-flex justify-content-center align-items-center row-cols-1 row-cols-md-2">
+        <div class="col">
+            <input type="text" class="col" placeholder="Enter Movie Title" name="search" required />
+        </div>
+        <div class="col">
+            <input type="submit" class="col btn btn-outline-light mx-3" value="Search" />
+        </div>
+    </form>
+</div>
+

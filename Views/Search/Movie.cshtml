@@ -1,0 +1,47 @@
+﻿@model MovieModel.Movie
+
+@{
+    ViewData["Title"] = "Movie - " + Model.Title;
+}
+
+<div class="desktop container-fluid row align-items-center justify-content-center">
+    <div class="col justify-content-end align-items-center">
+        <img src="@Model.Poster" class="img-fluid shadow-lg border border-2 border-danger" alt="@Model.Title">
+    </div>
+    <div class="col border-dark border-start p-sm-3 align-items-center justify-content-center">
+        <h2 class="text-lg-start">Details of <strong>@Model.Title</strong></h2>
+        <h5 class="text-md-start">Released: <strong>@Model.Year</strong></h5>
+        <p class="text-decoration-underline">Genre: <strong>@Model.Genre</strong></p>
+        <p class="text-md-start m-sm-2 border-top border-bottom p-2">Plot: <strong>@Model.Plot</strong></p>
+        <p class="text-md-start">Writen by: <strong>@Model.Writer</strong></p>
+        <span class="text-md-start">Starring: <strong>@Model.Actors</strong></span>        
+    </div>
+</div>
+<div class="mobile container-fluid row row-cols-1 text-center">
+    <div class="col p-sm-3 bg-light border-start border-end border-body">
+        <h2 class="text-lg-start">@Model.Title</h2>
+        <h5 class="text-md-start">Released: <strong>@Model.Year</strong></h5>
+        <p class="text-decoration-underline">Genre: <strong>@Model.Genre</strong></p>
+        <p class="text-md-start">Writen by: <stromg>@Model.Writer</stromg></p>
+        <span class="text-md-start">Starring: <strong>@Model.Actors</strong></span>
+        <p class="text-md-start m-sm-2 border-top border-bottom p-2">Plot: <strong>@Model.Plot</strong></p>
+        <div class="col justify-content-end align-items-center">
+            <img src="@Model.Poster" class="img-fluid shadow-lg border border-2 border-danger" alt="@Model.Title">
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="row text-center my-5 bg-dark border-bottom border-top border-3 border-danger w-50" style="border-radius:20px;">
+        <h3 class="display-6 text-danger p-2 border-bottom border-danger">Ratings</h3>
+        <div class="row text-center my-2">
+            @foreach (var x in Model.Ratings)
+            {
+                <span class="text-white p-2">@x.Source: @x.Value</span>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a class="btn btn-danger" asp-controller="Home" asp-action="Index">Return to search page</a>
+</div>

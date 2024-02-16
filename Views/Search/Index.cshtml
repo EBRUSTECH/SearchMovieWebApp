@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MovieModel.MovieBySearch>
+
+@{
+    ViewData["Title"] = "Search";
+}
+
+<div class="text-center">
+    <h4>
+        Result(s) for your search 
+    </h4>
+    <hr />
+</div>
+<div class="mobile container text-center p-3 my-4 w-50 border-bottom border-2 border-danger bg-dark text-white" style="border-radius:10px">
+    <form asp-controller="Search" asp-action="Index" class=" row d-flex justify-content-center align-items-center row-cols-1 row-cols-md-2">
+        <div class="col">
+            <input type="text" class="col " style="width:100%" placeholder="Enter Movie Title" name="search" />
+        </div>
+        <div class="col">
+            <input type="submit" class="col btn btn-outline-light mx-3" value="Search" />
+        </div>
+    </form>
+</div>
+<div class="container text-center mb-5">
+    <div class="row row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+        @foreach (var movie in Model)
+        {
+            <div class="mb-4">
+            <div class="col desktop">
+                <div class="card border border-danger border-2">
+                    <img src="@movie.Poster" alt="@movie.Title">
+                    <div class="card-body bg-black">
+                        <h5 class="card-title text-white">@movie.Title</h5>
+                        <p class="card-text text-light">Released in @movie.Year</p>
+                        <a class="btn btn-outline-danger stretched-link" asp-action="Movie" asp-route-id="@movie.imdbID">Information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col my-4 mobile">
+                <div class="card border border-danger border-2">
+                    <img src="@movie.Poster" alt="@movie.Title">
+                    <div class="card-body bg-black">
+                        <h5 class="card-title text-white">@movie.Title</h5>
+                        <p class="card-text text-light">Released in @movie.Year</p>
+                        <a class="btn btn-outline-danger stretched-link" asp-action="Movie" asp-route-id="@movie.imdbID">Information</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="desktop container text-center mb-3 mt-5 p-3 my-4 w-50 border-bottom border-2 border-danger bg-dark text-white" style="border-radius:10px">
+    <form asp-controller="Search" asp-action="Index" class=" row d-flex justify-content-center align-items-center row-cols-1 row-cols-md-2">
+        <div class="col">
+            <input type="text" class="col" placeholder="Search other movies" name="search" />
+        </div>
+        <div class="col">
+            <input type="submit" class="col btn btn-outline-light mx-3" value="Search" />
+        </div>
+    </form>
+</div>
+
+<div class="text-center mt-3 mb-5">
+    <a class="btn btn-danger mt-5" asp-controller="Home" asp-action="Index">Return to search page</a>
+</div>
